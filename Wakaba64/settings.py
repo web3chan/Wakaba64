@@ -33,6 +33,7 @@ SECRET_KEY = env_var('SECRET_KEY')
 DEBUG = env_var('DEBUG', False)
 
 ALLOWED_HOSTS = env_var('ALLOWED_HOSTS').split()
+CSRF_TRUSTED_ORIGINS = env_var('CSRF_TRUSTED_ORIGINS').split()
 
 
 # Application definition
