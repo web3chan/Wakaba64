@@ -1,0 +1,55 @@
+<div class="status" id="status-{{status.id}}">
+    <div class="details">
+        <input type="checkbox" class="status-checkbox" title="lmao">
+        <a href="{{status.url}}" title="status URL" target="_blank" class="status-url">🔗</a>
+
+        {% if status.spoiler_text %}
+            <span class="title">{{status.spoiler_text}}</span>
+        {% endif %}
+        <b title="@{{status.account.acct}}">
+            {% if status.account.display_name %}{{status.account.display_name}}{% else %}@{{status.account.acct}}{% endif %}
+        </b> 
+        <a href="/res/{{status.id}}.html#SS" title="view post">{{status.created_at}}</a>
+        {% if reblog_by %}
+        <span class="reblog-mark" title="reblog by {{reblog_by.acct}}">~</span>
+        {% endif %}
+    </div>
+    
+    {% if status.media_attachments %}
+    {% if not settings.DISPLAY_SENSITIVE_MEDIA and status.sensitive %}
+        [CENSORED]
+    {% else %}
+        <div class="media-attachments">
+            {% for m in status.media_attachments %}
+            {% include "board/status_media.html" with m=m %}
+            {%endfor%}
+        </div>
+    {% endif %}
+    {% endif %}
+
+    <div class="status-content">
+        <blockquote>
+        {% if settings.ESCAPE_CONTENT %}
+            {{status.content}}
+        {% else %}
+            {{status.content|safe}}
+        {% endif %}
+        {% if status.poll %}
+        <div class="poll" title="poll">
+            {% for o in status.poll.options %}
+                <p>☑️ ({{o.votes_count}} votes) {{o.title}} </p>
+            {% endfor %}
+            <h2>🗳️📊 ({{status.poll.votes_count}} total votes)</h2>
+        </div>
+        {% endif%}
+        </blockquote>
+    </div>
+
+    <div class="action-bar">
+        [<a href="/wakaba.pl?in_reply_to_id={{status.id}}" title="reply to post">Reply</a>]
+        <span title="{{status.replies_count}} replies, {{status.reblogs_count}} reposts, {{status.favourites_count}} likes">{{status.replies_count}} replies</span>
+        {% for tag in status.tags %}
+        <a href="{% url 'hashtag-timeline' tag.name %}" target="_blank" class="hashtag-url">#{{tag.name}}</a>
+        {% endfor %}
+    </div>
+</div>

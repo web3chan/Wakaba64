@@ -1,0 +1,41 @@
+{% extends "board/base.html" %}
+
+{% block title %}God Mode{% endblock %}
+
+{% block content %}
+<h1>God Mode</h1>
+
+<hr>
+<p>
+    <a href="{% url 'add-mastoapi' %}">Add MastoApi</a> /
+
+    <a href="{% url 'add-accounts' %}">Add Accounts</a>
+</p>
+<p>
+    <a href="{% url 'banhammer' %}">BANHAMMER</a> /
+
+    <a href="{% url 'purge' %}">PURGE</a> /
+
+    <a href="{% url 'unban' %}">Remove ban</a>
+</p>
+<p>
+    <a href="{% url 'follow' %}">Follow/unfollow accounts</a> /
+
+    <a href="{% url 'block' %}">Block remote user/instance</a>
+</p>
+<hr>
+<div id="dashboard">
+<p>
+    <h3>Users:</h3> 
+    <b>total</b>: {{users}}
+</p>
+<p>
+    <h3>Statuses:</h3>
+    <b>total</b>: {{statuses}}, <b>24h</b>: {{statuses_24h}}, <b>1h</b>: {{statuses_1h}}
+</p>
+<p>
+    <h3>Media Uploads:</h3>
+    <b>total</b>: {{uploads}}, <b>24h</b>: {{uploads_24h}}, <b>1h</b>: {{uploads_1h}}
+</p>
+</div>
+{% endblock %}

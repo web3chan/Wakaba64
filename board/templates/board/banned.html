@@ -1,0 +1,20 @@
+{% extends "board/base.html" %}
+
+{% block title %}You are banned{% endblock %}
+
+{% block content %}
+<h1>You are banned</h1>
+
+<div>
+    {% for ban in bans %}
+    <p>Reason: {{ban.reason}}</p>
+    <p>Expires at: {{ban.expires}}</p>
+    <p>Ban ID: {{ban.id}}</p>
+    {% endfor %}
+</div>
+<p class="warning">Read the rules before posting again</p>
+
+<small>Bans are used to keep discussions on topic. Multiple bans can lead to a full account purge.</small>
+{% endblock %}
+
+{% block footer%}{% endblock%}

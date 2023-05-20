@@ -1,0 +1,20 @@
+{% extends "board/base.html" %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+<p>
+    <a href="{% url 'godmode-index' %}">back</a>
+</p>
+
+<h1>{{title}}</h1>
+<hr>
+
+<div>
+    <form method="POST" action="">{% csrf_token %}
+        {{form.as_p}}
+        <button>Submit</button>
+    </form>
+</div>
+
+{% endblock %}

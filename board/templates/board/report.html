@@ -1,0 +1,19 @@
+{% extends "board/base.html" %}
+
+{% block title %}{{settings.SITE_TITLE}} — Report{% endblock %}
+
+{% block content %}
+<p>
+    <a href="{% url 'board-index' %}">back</a>
+</p>
+
+<h1>Report Abuse</h1>
+<hr>
+
+<div>
+    <form method="POST" action="">{% csrf_token %}
+        {{form.as_p}}
+        <button>Submit</button>
+    </form>
+</div>
+{% endblock %}

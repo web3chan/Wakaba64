@@ -1,0 +1,12 @@
+{% extends "board/base.html" %}
+
+{% block title %}Site Rules{% endblock %}
+
+{% block content %}
+
+<div class="hero">
+    <h1>{{ settings.SITE_NAME }} rules:</h1>
+    <p>{{ settings.SITE_RULES }}</p>
+</div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "board/base.html" %}
+
+{% block content %}
+
+<div id="timeline-details">
+    {% block timeline_details %}{% endblock%}
+</div>
+
+<hr>
+
+<div id="timeline">
+    {% for status in statuses %}
+        {% if status.reblog %}
+            {% include "board/status.html" with reblog_by=status.account status=status.reblog %}
+        {% else %}
+            {% include "board/status.html" with status=status %}
+        {% endif %}
+        <hr>
+    {% empty %}
+        <p>nothing here yet...</p>
+    {% endfor %}
+</div>
+
+<div id="timeline-pagination">
+    {% if pagination.max_id %}
+        [<a href="?max_id={{ pagination.max_id }}">Next</a>]        
+    {% endif %}
+</div>
+
+{% include settings.NAVBAR_TEMPLATE %}
+
+{% endblock %}

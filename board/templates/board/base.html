@@ -1,0 +1,20 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{{settings.SITE_NAME}} — {{settings.SITE_TITLE}}{% endblock %}</title>
+        <link href="{% static 'board/base.css' %}" rel="stylesheet">
+        <link href="{% static settings.CSS_THEME %}" rel="stylesheet">
+        <link href="{% static settings.FAVICON %}" rel="shortcut icon">
+    </head>
+    <body>
+        <main id="content">
+            {% include settings.NAVBAR_TEMPLATE %}
+
+            {% block content %}{% endblock %}
+
+            {% include "board/footer.html" %}
+        </main>
+    </body>
+</html>

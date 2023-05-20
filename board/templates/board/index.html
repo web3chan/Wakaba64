@@ -1,0 +1,34 @@
+{% extends "board/base.html" %}
+
+{% block content %}
+
+<div class="hero">
+    <h1 class="site-name">{{settings.SITE_NAME}}</h1>
+
+    <p>
+        <i class="site-title">{{settings.SITE_TITLE}}</i>
+    </p>
+</div>
+
+<hr>
+
+<div class="hero">
+{% for account in follows %}
+    <p>
+        <a href="{% url 'account-timeline' account.acct %}" target="_blank">{% if account.display_name %}{{account.display_name}}{% else %}@{{account.acct}}{% endif %}</a> 
+        <small>{{ account.statuses_count }} posts, {{ account.followers_count }} peers</small>
+    </p>
+{% empty %}
+    <p>nothing here yet...</p>
+{% endfor %}
+</div>
+
+<hr>
+
+<div class="pagination">
+    {% if pagination.max_id %}
+        [<a href="?max_id={{ pagination.max_id }}">Next</a>]        
+    {% endif %}
+</div>
+
+{% endblock %}

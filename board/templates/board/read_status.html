@@ -1,0 +1,37 @@
+{% extends "board/base.html" %}
+
+{% block title %}
+{{settings.SITE_NAME}} — 
+    {% if status.spoiler_text %}{{ status.spoiler_text }}{% else %}@{{ status.account.acct }}{% endif %} — {{status.id}}
+{% endblock %}
+
+{% block content %}
+
+<hr>
+<div id="postform-link">
+    [<a href="/wakaba.pl?in_reply_to_id={{status.id}}">Reply</a>]
+</div>
+<hr>
+
+{% for status in context.ancestors %}
+<div class="ancestor">
+    {% include "board/status.html" with status=status %}
+</div>
+{% endfor %}
+
+<div id="SS">
+    {% include "board/status.html" with status=status %}
+</div>
+
+{% for status in context.descendants %}
+<div class="descendant">
+    {% include "board/status.html" with status=status %}
+</div>
+{% endfor %}
+
+<hr>
+<small><a href="{% url 'report.html' %}?status_id={{status.id}}" title="Report Abuse">[!]</a></small>
+
+{% include settings.NAVBAR_TEMPLATE %}
+
+{% endblock %}

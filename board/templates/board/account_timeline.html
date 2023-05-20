@@ -1,0 +1,41 @@
+{% extends "board/timeline.html" %}
+
+{% block title %}
+{{settings.SITE_NAME}} —
+    {% if account.display_name %}{{account.display_name}}{% else %}@{{account.acct}}{% endif %}
+{% endblock %}
+
+{% block timeline_details %}
+
+    {% if settings.DISPLAY_MEDIA %}
+    <img src="{{account.avatar}}">
+
+    <style>
+        html, body {
+            background-image: url("{{account.header}}");
+            height: 100%; 
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+    {% endif %}
+
+    <h1>{% if account.display_name %}{{account.display_name}}{% else %}@{{account.acct}}{% endif %}</h1>
+    <small title="Fediverse Address">
+        <a href="{{account.url}}" title="account URL" target="_blank" class="account-url">🔗</a>
+        @{{account.acct}}
+    </small>
+    <p>{{ account.statuses_count }} posts, {{ account.followers_count }} peers</p>
+    <p>
+    {% if settings.ESCAPE_CONTENT %}
+        {{account.note}}
+    {% else %}
+        {{account.note | safe}}
+    {% endif %}
+    </p>
+    <hr>
+    <div id="postform-link">[<a href="/wakaba.pl?board=@{{account.acct}}">Send Post</a>]</div>
+    
+{% endblock %}

@@ -1,0 +1,92 @@
+html, body {
+    font-family: "Liberation Serif", serif;
+    word-break: break-word;
+    font-size: 14pt;
+    margin: 0px;
+}
+main {
+    min-height: 100vh;
+    min-width: 800px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0px 20px;
+}
+main > footer {
+    text-align: center;
+    font-size: small;
+}
+nav {
+    text-align: right;
+}
+.hero {
+    font-size: 2em;
+    text-align: center;
+}
+
+
+/*postform*/
+#postform-link {
+    text-align: center;
+}
+#postform-labels {
+    vertical-align: top;
+    width: 20%;
+    display: inline-block;
+    font-weight: bold;
+}
+#postform-inputs {
+    display: inline-block;   
+}
+
+/* timeline */
+#timeline-details {
+    text-align: center;
+}
+#timeline-details > img {
+    max-height: 200px;
+}
+
+/*status*/
+.status {
+    padding: 0.5em;
+    margin: 2px 0;
+    display: inline-block;
+}
+.status .title {
+    font-weight: bold;
+    font-size:1.2em;
+}
+
+.status .action-bar {
+    font-size: small;
+}
+.status-content {
+    display: inline-block;
+    vertical-align: top;
+}
+.status-content > blockquote {
+    margin: 0.5em;
+    font-size: larger;
+}
+.hashtag-url {
+    color: inherit;
+}
+
+/*media-attachments*/
+.media-attachments {
+    display: inline-block;
+}
+.media {
+    display: inline-block;
+    margin: 0.5em;
+}
+.media > a {
+    display: block;
+    font-size: small;
+}
+.media img, 
+.media video {
+    max-height: 300px;
+    max-width: 300px;
+    vertical-align: top;
+}

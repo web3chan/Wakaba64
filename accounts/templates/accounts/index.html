@@ -1,0 +1,28 @@
+<style>
+    .content {
+        width: 400px;
+        margin: 0 auto;
+        padding-top: 50px;
+    };
+</style>
+
+<div class="content">
+    {% if request.user.is_authenticated %}
+        <h1>Your Pass Token is activated, you can post now</h1>
+    {% else %}
+        <h1>Enter your Pass Token</h1>
+
+        <form method="post" action="">{% csrf_token %}
+            {% if "next" in request.GET %}
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
+            {% endif %}
+            <input name="pass" type="text" placeholder="Pass Token">
+            <button>Submit</button>
+        </form>
+        
+        <p>Pass Token system is used to filter NPCs out</p>
+    {% endif %}
+    <p>
+        <a href="/">[Home]</a>
+    </p>
+</div>

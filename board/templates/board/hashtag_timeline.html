@@ -1,0 +1,11 @@
+{% extends "board/timeline.html" %}
+
+{% block title %}
+{{settings.SITE_NAME}} — #{{hashtag}}
+{% endblock %}
+
+{% block timeline_details %}
+    <h1 class="hashtag-title">#{{hashtag}}</h1>
+    <hr>
+    <div id="postform-link">[<a href="/wakaba.pl?board=%23{{hashtag}}">Send Post</a>]</div>
+{% endblock %}

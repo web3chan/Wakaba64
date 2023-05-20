@@ -1,0 +1,17 @@
+{% load media_display %}
+
+<div class="media">
+    {% if settings.DISPLAY_MEDIA %}
+        <a href="{{m|media_url}}" target="blank" title="open media file">📎 open</a>
+
+        {% if m.type == "image" %}
+        <img src="{{m|media_url}}" loading="lazy">
+        {% elif m.type == "audio" %}
+        <audio controls loop preload="none" src="{{m|media_url}}"></audio>
+        {% elif m.type == "video" or m.type == "gifv" %}
+        <video controls loop src="{{m|media_url}}"></video>
+        {% endif %}
+    {% else %}
+        <a href="{{m|media_url}}" target="blank" title="open media file">📎 {% if m.description %}{{m.description}}{% else %}{{m|media_url}}{% endif %}</a>
+    {% endif %}
+</div>

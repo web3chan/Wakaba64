@@ -1,0 +1,54 @@
+html, body {
+    background-image: url("/static/board/bg.jpg");
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #800000;
+}
+
+a {
+    color: #0000EE;
+}
+a:hover {
+    color: #DD0000;
+}
+main {
+    background-color: #FFFFEE;
+    border: 1px;
+    border-style: none solid;
+}
+
+.status {
+    background: #f0e0d6;
+    border: solid 1px #CCCCCC;
+}
+.status .title {
+    color: #cc1105;
+}
+.status .details > b { /* status.display_name */
+    color: #117743;
+}
+#SS .status { /* Selected Status */
+    border: red dashed 2px;
+}
+.status-url, .account-url {
+    display: none;
+}
+
+.warning {
+    color: red;
+}
+
+.site-title, .hashtag-title {
+    background-image: repeating-linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red, violet);
+    text-align: center;
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow 4s linear infinite;
+}
+@keyframes rainbow { 
+    to {background-position:200% center}
+}

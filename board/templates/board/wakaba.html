@@ -1,0 +1,50 @@
+{% extends "board/base.html" %}
+
+{% block title %}{{settings.SITE_TITLE}}{% endblock %}
+
+
+{% block content %}
+
+{% if parent %}
+<div>
+    {% include "board/status.html" with status=parent %}
+</div>
+    <h1>Send Reply</h1>
+{% elif board %}
+    <h1>New Post to {{ board }}</h1>
+{% endif %}
+<p class="warning">Read the rules before posting</p>
+
+<hr>
+
+<div id="postform">
+    <form enctype="multipart/form-data" method="post" action="/wakaba.pl">  
+        {% csrf_token %}
+        {% if parent %}
+        <input name="in_reply_to_id" type="hidden" value="{{parent.id}}">
+        {% endif %}
+
+        <div id="postform-labels">
+            <div>Topic</div>
+            <div>Comment</div>
+        </div>
+        <div id="postform-inputs">
+            <div>
+                <input name="topic" type="text" size="35"  maxlength="140">
+                <button>Submit</button>
+            </div>
+            <div>
+                <textarea name="comment" cols="60" rows="6">{%if hashtag %}#{{hashtag}} {% elif board %}{{board}} {% elif parent %}@{{parent.account.acct}} {% endif %}</textarea>
+            </div>
+            {% if request.user.account.media_uploads %}
+            <div>
+                <input type="file" name="media" size="35">
+            </div>
+            {% endif %}
+        </div>
+    
+    </form>
+</div>
+<hr>
+
+{% endblock %}

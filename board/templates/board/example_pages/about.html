@@ -1,0 +1,14 @@
+{% extends "board/base.html" %}
+
+{% block title %}About This Site{% endblock %}
+
+{% block content %}
+
+<div class="hero">
+    <h1>WTF is {{ settings.SITE_NAME }}?</h1>
+    <p>{{ settings.SITE_ABOUT }}</p>
+</div>
+
+{% endblock %}
+
+{% block footer %}{% endblock %}
