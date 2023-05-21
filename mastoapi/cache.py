@@ -35,13 +35,13 @@ def account_by_acct(api, acct):
             timeout=settings.CACHE_ACCOUNT
         )
 
-        if len(results["accounts"]) > 0:
-            account = results["accounts"][0]
-            set_account(api, account)
-        else:
-            # TODO: cache the value somehow
-            account = None
+        for a in results["accounts"]:
+            if a["acct"] == acct:
+                account = a
+                set_account(api, account)
+                break
 
+    # TODO: cache the None value somehow
     return account
 
 def set_account(api, account):
