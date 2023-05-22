@@ -41,7 +41,7 @@ main {
     color: red;
 }
 
-.site-title, .hashtag-title {
+.hashtag-title {
     background-image: repeating-linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red, violet);
     text-align: center;
     background-size: 200% auto;

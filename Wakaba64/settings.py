@@ -131,7 +131,7 @@ WAKABA_VERSION = env_var("WAKABA_VERSION", "v1.0.0-alpha")
 # UI customization
 SITE_NAME = env_var("SITE_NAME", "web3chan")
 SITE_TITLE = env_var("SITE_TITLE", "NextGen MultimediaBoard")
-SITE_ABOUT = env_var("SITE_ABOUT", "4chan, but in ✨web3✨")
+SITE_ABOUT = env_var("SITE_ABOUT", "it's like 4chan, but ✨decentralized✨")
 ABOUT_TEMPLATE = env_var("ABOUT_TEMPLATE", "board/example_pages/about.html")
 SITE_RULES = env_var("SITE_RULES", "do what you want 'cause a pirate is free!")
 RULES_TEMPLATE = env_var("RULES_TEMPLATE", "board/example_pages/rules.html")
