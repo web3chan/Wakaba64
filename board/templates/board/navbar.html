@@ -1,12 +1,17 @@
 <nav>
     [
+    {% for acct in settings.FEATURED_ACCOUNTS.split %}
+        <a href="{% url 'account-timeline' acct %}">@{{acct}}</a> /
+    {% endfor %}
+    {% for tag in settings.FEATURED_TAGS.split %}
+        <a href="{% url 'hashtag-timeline' tag %}">#{{tag}}</a> / 
+    {% endfor %}
     <a href="{% url 'board-index' %}" title="Home Page">Home</a> /
     <a href="{% url 'home-timeline' %}" title="Home Timeline">Timeline</a>
     ] -
 
     [
-    <a href="{% url 'auth' %}" title="YARRRRRRRRRrrrgh!!!">Pass</a> /
-    <a href="{% url 'pages/rules.html' %}" title="Site Rules" target="_blank">Rules</a> /
+    <a href="{% url 'auth' %}" title="Enter Pass Token">Pass</a> /
     <a href="{% url 'pages/about.html' %}" title="About This Site" target="_blank">About</a>
     ]
 </nav>

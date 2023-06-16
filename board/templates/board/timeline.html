@@ -1,6 +1,12 @@
 {% extends "board/base.html" %}
+{% load static %}
 
 {% block content %}
+<style>
+    html, body {
+        background-image: url("{% static settings.BG_IMAGE_TIMELINE %}");
+    }
+</style>
 
 <div id="timeline-details">
     {% block timeline_details %}{% endblock%}

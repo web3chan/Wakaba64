@@ -1,5 +1,5 @@
 html, body {
-    background-image: url("/static/board/bg.jpg");
+    background-color: lightpink;
     height: 100%; 
     background-position: center;
     background-repeat: no-repeat;

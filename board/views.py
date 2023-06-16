@@ -71,22 +71,7 @@ def _create_status_form_handler(request, form):
 #### Views
 
 def index(request):
-    api = MastoApi.get_api(request.user)
-
-    max_id = request.GET.get("max_id")
-    if max_id and not USER_ID_RE.fullmatch(max_id):
-        raise Http404
-
-    me = mastoapi.cache.cached_call(f"{api.name}-me", api.account_verify_credentials, timeout=3600)
-    accounts = mastoapi.cache.cached_call(f"{api.name}-following-{max_id}",
-        api.account_following, me["id"], max_id=max_id, limit=settings.ACCOUNT_PAGINATION, timeout=600)
-    pagination = _get_pagination(accounts, settings.ACCOUNT_PAGINATION)
-
-    for a in accounts:
-        mastoapi.cache.set_account(api, a)
-
-    return render(request, settings.INDEX_TEMPLATE, 
-                {"settings": settings, "follows": accounts, "pagination": pagination})
+    return render(request, settings.INDEX_TEMPLATE, {"settings": settings})
 
 def home_timeline(request):
     api = MastoApi.get_api(request.user)

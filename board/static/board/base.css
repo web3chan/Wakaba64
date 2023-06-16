@@ -17,6 +17,7 @@ main > footer {
 }
 nav {
     text-align: right;
+    font-size: smaller;
 }
 .hero {
     font-size: 2em;

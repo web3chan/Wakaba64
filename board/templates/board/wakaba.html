@@ -13,7 +13,9 @@
 {% elif board %}
     <h1>New Post to {{ board }}</h1>
 {% endif %}
-<p class="warning">Read the rules before posting</p>
+<p>
+    <a href="{% url 'pages/rules.html' %}" class="warning" title="Site Rules" target="_blank">Read the rules before posting</a>
+</p>
 
 <hr>
 

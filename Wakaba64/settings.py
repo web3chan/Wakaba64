@@ -32,9 +32,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env_var('SECRET_KEY')
 DEBUG = env_var('DEBUG', False)
 
-ALLOWED_HOSTS = env_var('ALLOWED_HOSTS').split()
-CSRF_TRUSTED_ORIGINS = env_var('CSRF_TRUSTED_ORIGINS').split()
+ALLOWED_HOSTS = env_var('ALLOWED_HOSTS', [])
+if ALLOWED_HOSTS:
+    ALLOWED_HOSTS = ALLOWED_HOSTS.split()
 
+CSRF_TRUSTED_ORIGINS = env_var('CSRF_TRUSTED_ORIGINS', [])
+if CSRF_TRUSTED_ORIGINS:
+    CSRF_TRUSTED_ORIGINS = CSRF_TRUSTED_ORIGINS.split()
 
 # Application definition
 
@@ -130,7 +134,7 @@ WAKABA_VERSION = env_var("WAKABA_VERSION", "v1.0.0-alpha")
 
 # UI customization
 SITE_NAME = env_var("SITE_NAME", "web3chan")
-SITE_TITLE = env_var("SITE_TITLE", "NextGen MultimediaBoard")
+SITE_TITLE = env_var("SITE_TITLE", "Next-Gen memes")
 SITE_ABOUT = env_var("SITE_ABOUT", "it's like 4chan, but ✨decentralized✨")
 ABOUT_TEMPLATE = env_var("ABOUT_TEMPLATE", "board/example_pages/about.html")
 SITE_RULES = env_var("SITE_RULES", "do what you want 'cause a pirate is free!")
@@ -139,6 +143,12 @@ NAVBAR_TEMPLATE = env_var("NAVBAR_TEMPLATE", "board/navbar.html")
 INDEX_TEMPLATE = env_var("INDEX_TEMPLATE", "board/index.html")
 CSS_THEME = env_var("CSS_THEME", "board/futaba.css")
 FAVICON = env_var("FAVICON", "board/favicon.ico")
+FEATURED_ACCOUNTS = env_var("FEATURED_ACCOUNTS", "")
+FEATURED_TAGS = env_var("FEATURED_TAGS", "technology memes web3chan")
+BG_IMAGE = env_var("BG_IMAGE", "board/monster.jpg")
+BG_IMAGE_INDEX = env_var("BG_IMAGE_INDEX", BG_IMAGE)
+BG_IMAGE_TIMELINE = env_var("BG_IMAGE_TIMELINE", BG_IMAGE)
+BG_IMAGE_STATUS = env_var("BG_IMAGE_STATUS", BG_IMAGE)
 
 
 # Default MastoApi client name. Used when a user is not logged in
