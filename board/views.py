@@ -70,9 +70,6 @@ def _create_status_form_handler(request, form):
 
 #### Views
 
-def index(request):
-    return render(request, settings.INDEX_TEMPLATE, {"settings": settings})
-
 def home_timeline(request):
     api = MastoApi.get_api(request.user)
 

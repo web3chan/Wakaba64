@@ -6,7 +6,6 @@
     {% for tag in settings.FEATURED_TAGS.split %}
         <a href="{% url 'hashtag-timeline' tag %}">#{{tag}}</a> / 
     {% endfor %}
-    <a href="{% url 'board-index' %}" title="Home Page">Home</a> /
     <a href="{% url 'home-timeline' %}" title="Home Timeline">Timeline</a>
     ] -
 
